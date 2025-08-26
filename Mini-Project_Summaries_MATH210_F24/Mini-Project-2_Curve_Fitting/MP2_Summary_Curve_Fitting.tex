@@ -1,0 +1,76 @@
+\documentclass[article, 11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Typical Packages:
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{palatino, url, multicol}
+\usepackage{enumerate}
+\usepackage{ulem}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start Document:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Project Title:
+\begin{center}\boxed{\LARGE{\textbf{\textsc{ MINI-PROJECT 2}}}}\\
+\Huge{\textbf{\textsc{ Interpolation and Curve Fitting }}} \\ \end{center}
+
+\vspace{.6cm}
+
+% Brief Summary:
+\noindent \boxed{\textbf{\textsc{Brief Summary}}}
+
+\vspace{-.35cm}
+\noindent \hrulefill
+
+This project aims to provide a hands-on exploration of fundamental concepts in linear algebra, interpolation, and curve fitting using Python's built-in functions from NumPy, SciPy, and Matplotlib.  Linear algebra is important in this application because the solution to consistent linear systems of equations will be needed to solve both interpolation and linear least squares formulations.  Interpolation is a method used to estimate unknown values between known data points.  Interpolation allows us to construct smooth curves from discrete points and to fill in gaps in time series data.  Interpolation is typically used to estimate unknown values \textit{within} the bounds of a given data set and so extrapolation using an interpolated curve is typically useless.  Linear and nonlinear curve fitting, on the other hand, is a statistical technique that optimizes a given function to a set of data values by minimizing the overall error between the data points and the curve.  This function can then be used for prediction and extrapolation outside the original bounds of the data.  By working through coding exercises and practical examples, you will strengthen your understanding of essential mathematical tools related to linear algebra, interpolation, and curve fitting, one of which will come from a local company.  \\
+
+
+% Goals:
+\noindent \boxed{\textbf{\textsc{Goals}}}
+
+\vspace{-.35cm}
+\noindent \hrulefill
+
+\begin{itemize}
+	\item Formulate interpolation and curve fitting problems into linear systems and solve using Python.
+	\item Utilize built-in Python functions to fit both linear and nonlinear functions to data. 
+	\item Investigate how well each model does by analyzing the error and variance of parameters.  
+	\item Apply these techniques to real two-variable data sets or time-series data. 
+\end{itemize}
+
+% Where to Start: 
+\noindent \boxed{\textbf{\textsc{Where to Start}}}
+
+\vspace{-.35cm}
+\noindent \hrulefill
+
+We'll start by looking at basic commands in Python to solve square, consistent linear systems using the linalg package in Numpy.  Then, we'll formulate linear systems whose unknowns are parameters of an interpolating function as well as a least-squares regression line.  We'll discuss the difference in the two models and expand them both to polynomial functions.  From here, we'll move onto exponential and sinusoidal models.    \\
+
+% Skills Needed/Gained:
+\noindent \boxed{\textbf{\textsc{Skills Needed/Gained:}}}
+
+\vspace{-.35cm}
+\noindent \hrulefill
+
+\begin{itemize}
+	\item Formulating linear and nonlinear least-squared regression problems.  
+	\item Error analysis of best-fit models.
+	\item Document creation in \LaTeX. 
+\end{itemize}
+
+\noindent \hrulefill
+
+\end{document}
