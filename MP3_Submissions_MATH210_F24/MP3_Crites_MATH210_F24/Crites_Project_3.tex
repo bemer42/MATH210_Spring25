@@ -1,0 +1,148 @@
+%Setting up document
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\graphicspath{{/home/Documents/'Mathematical Typesetting'/'Project 3'/Figures/}}
+\usepackage{animate}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgflibraryarrows}
+\usepackage{pgflibrarysnakes}
+\usepackage{upgreek}
+\usepackage{tipa}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{floatrow}
+\usepackage{gensymb}
+\usepackage{caption}
+\usepackage{wrapfig}
+% Fancy Header Package:
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\setlength\headsep{20pt}
+\lhead{Mini-Project 3 Report}
+\rhead{MAT210}
+\fancyfoot{}
+%Title
+\title{\textsc{Mini-Project 3 -- ODE and IVP}}
+\author{Cameron Crites}
+\date{\today}
+
+
+%Document
+\begin{document}
+\maketitle
+\begin{abstract}
+Differential equations are are equations that relate a rate of change of a function to the instantaneous value of the function. When put into physical terms, they are most often equations that relate the position and velocity of an oject to its velocity, acceleration, or both. When the acceleration and position are involved, this is called a Second Order Ordinal Differential Equation because the acceleration is the second derivative of the position, where velocity is the first derivative. ODE's can be solved to give a family of functions, which can be localized if there is a known solution to the function. If a solution is known, it is called and IVP or Initial Value Problem.
+\end{abstract}
+\pagebreak
+
+\section{Introduction}\label{Sec_Introduction}
+Celestial bodies and their movements seem very large and complex to the unknowing eye, but they follow a very simple set of laws. These laws, defined by Isaac Newton can be applied to describe the attraction due to gravity of bodies. By continuously recalculating these equations for small time intervals, movie-like plot of the position of these celestial bodies can be created. These basic equations are as follows:
+\begin{equation}
+	F = ma
+\end{equation}
+\begin{equation}
+	F = -G \frac{m_1 m_2}{r^2}
+\end{equation}
+Equation 1 and equation 2 are both equal to $F$, so they can be set as equal to each other. These equations also assume only one spacial dimension, so to expand it to three, extra variables must be incorporated. The three spacial dimensions will be defined as $x$, $y$, and $z$. This turns these equations into:
+\begin{equation}
+	m_{body} a_x = -G \frac{m_1 m_2}{(\sqrt{(x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2})^2}
+\end{equation}
+\begin{equation}
+	m_{body} a_y = -G \frac{m_1 m_2}{(\sqrt{(x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2})^2}
+\end{equation}
+\begin{equation}
+	m_{body} a_z = -G \frac{m_1 m_2}{(\sqrt{(x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2})^2}
+\end{equation}
+Gravity acts on all objects, so depending on which object the force is being calculated for, the $m_{body}$ will either be $m1$ or $m2$. These equations represent the second order ODE of the position of the object. This can be turned into a first order ODE by equating the acceleration $a$ to $\frac{dv}{dt}$. Multiplying these equations by the normal vector $\hat{x} = \frac{x2-x1}{\sqrt{(x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2}}$ and dividing both sides by the mass of the object leads to the final form of these equations:
+\begin{equation}
+	\frac{dv_{x1}}{dt} = -(x2-x1)G \frac{m_2}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+\begin{equation}
+	\frac{dv_{y1}}{dt} = -(y2-y1)G \frac{m_2}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+\begin{equation}
+	\frac{dv_{z1}}{dt} = -(z2-z1)G \frac{m_2}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+where:
+\begin{equation}
+	v_{x1} = \frac{dx_{1}}{dt}
+\end{equation}
+\begin{equation}
+	v_{y1} = \frac{dy_{1}}{dt}
+\end{equation}
+\begin{equation}
+	v_{z1} = \frac{dz_{1}}{dt}
+\end{equation}
+
+\section{Methods}\label{Sec_Methods}
+For 2 celestial bodies of given masses, $m_1$ and $m_2$, the change in velocity can be found by solving the IVP for the acceleration in a particular direction. This solution can then be used to solve the IVP for change in position in the same direction, and end up with a new positional coordinate. Solving Equations 6-11 using $scipy.integrate.solve\_ivp$ gives the position and velocity of the first body, while Equations 12-17 give the position and velocity of the second body:
+\begin{equation}
+	\frac{dv_{x2}}{dt} = -(x1-x2)G \frac{m_1}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+\begin{equation}
+	\frac{dv_{y2}}{dt} = -(x1-x2)G \frac{m_1}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+\begin{equation}
+	\frac{dv_{z2}}{dt} = -(x1-x2)G \frac{m_1}{((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)^{3/2}}
+\end{equation}
+where:
+\begin{equation}
+	v_{x2} = \frac{dx_{2}}{dt}
+\end{equation}
+\begin{equation}
+	v_{y2} = \frac{dy_{2}}{dt}
+\end{equation}
+\begin{equation}
+	v_{z2} = \frac{dz_{2}}{dt}
+\end{equation}
+
+\section{Results}\label{Sec_Results}
+After python does all of the heavy lifting, a nice animation is produced showing the celestial bodies and their flight paths.\\
+\par
+\begin{wrapfigure}{l}{0.45\textwidth}
+\animategraphics[autoplay,loop,width=0.8\textwidth]{12}{/home/ccrites/Documents/Mathematical Typesetting/Project 3/Figures/Stable_orbit-}{0}{99}
+\caption{\label{fig1} Stable Orbit Animation}
+\end{wrapfigure}
+Adjusting the initial parameters results in extremely varied plots of the bodies' movements. Figure 1 shows a stable orbit, where the center of mass makes almost a perfect circle, resulting in an almost figure 8 pattern of movement for the 2 bodies. Each orbit is a near circle, but the smaller body has an orbit that is larger than the other body, especially in relation to it's mass. The initial parameters for this model have the velocities for each dimension equal but opposite. The separation of the 2 bodies is not necessarily important to the type of orbit; increasing the distance just results in stretched out orbits, but they are still stable, cycling through the same coordinates.\\
+This model can be used to show many different scenarios, including one where the smaller body is barely keeping up with the larger one. Almost playing follow the leader, until it finally takes over the larger body and resumes the chase.\\
+\par
+\begin{wrapfigure}{l}{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{/home/ccrites/Documents/Mathematical Typesetting/Project 3/Figures/Chase1}
+\caption{\label{fig2} Small body begins behind large}
+\end{wrapfigure}
+In order to create this scenario, the velocities of the bodies are opposite, but the larger body has a velocity that is 3 times the magnitude of the smaller. This results in the larger body speeding away from the smaller, while the smaller is pulled along due to the gravitational attraction to the larger body. Eventually, the smaller body is able to turn the corner around the larger body, and it makes an orbit where it begins the chase again. This is reminiscent of the path that a comet follows, only making a pass every now and then. With more investigation and some real data, I would be shocked to see if the initial conditions of a rare comet such as Haley's did not match those discussed here. Figure 2 shows the smaller body trailing behind the larger, while figure 3 shows its advance to overtake the larger body.
+\pagebreak
+\begin{figure}
+%\centering
+\begin{minipage}[l]{0.45\linewidth}
+\includegraphics[width=0.8\textwidth]{/home/ccrites/Documents/Mathematical Typesetting/Project 3/Figures/Chase2}
+%\caption{\label{fig3} Small body travels next to large}
+\end{minipage}%
+\begin{minipage}[r]{0.45\linewidth}
+\includegraphics[width=0.8\textwidth]{/home/ccrites/Documents/Mathematical Typesetting/Project 3/Figures/Chase3}
+\caption{\label{fig3} Small body overtakes large}
+\end{minipage}
+\end{figure}%
+\par
+\bigskip \bigskip%
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+\includegraphics[width=0.8\textwidth]{/home/ccrites/Documents/Mathematical Typesetting/Project 3/Figures/Repel1}
+\caption{\label{fig4} Bodies fly away from eachother}
+\end{wrapfigure}
+\par There are also situations where the bodies may come together then fly in opposite directions. This happens when the velocities are acting in opposite directions, and the bodies begin relatively far apart. If they are close and the velocities are opposite, they have the tendancy to collide and end the simulation. All of the example situations were calculated using a large body which is 4 times as massive as the smaller body. This means that the center of mass is much closer to the large body. The smaller body may not appear to orbit the large body, but it does always orbit the center of mass. Figure 4 shows this motion of coming together then separating, and you can see that the smaller body just barely makes it past the location of the center of mass before turning around to fly away.
+\section{Conclusion}\label{Sec_Conclusion}
+Celestial movement is something that has captivated the minds of humans for as long as there were humans to witness such movements. Religions have spawned out of the idea that there is some meaning behind the movement of these bodies, and great minds have spent their lives recording positions and describing the rate at which they change. All for us today to be able to simulate these movements on a device that would've been even more amazing to those earlier humans. We are only able to predict the motion of these bodies due to our understanding of the laws of the universe, and our ability to solve the equations that define them. Humans did not create physics, nor the math that describes it, but we are becoming better and better at using it to describe the phenomenae around us.
+
+
+\end{document}
