@@ -1,0 +1,281 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[graphics]{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes} 
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin} **
+%\usetheme{Boadilla} **
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt} 
+%\usetheme{Dresden} 
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen} 
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%\usefonttheme{professionalfonts} % using non standard fonts for beamer
+%\usefonttheme{serif} % default family is serif
+%\usepackage{fontspec}
+%\setmainfont{Liberation Serif}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\usepackage{multimedia}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{pgflibraryarrows}
+\usepackage{pgflibrarysnakes}
+\usepackage{upgreek}
+\usepackage{tipa}
+\usepackage{textcomp}
+\usepackage{ulem}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{cancel}
+\usepackage{tikz}
+\usefonttheme{serif}
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pdd}[2]{\frac{\partial^2 #1}{\partial {#2}^2}}
+\newcommand{\pddd}[2]{\frac{\partial^3 #1}{\partial {#2}^3}}
+\newcommand{\de}[2]{\frac{d #1}{d #2}}
+\newcommand{\wha}[1]{\widehat{\alpha_{#1}}}
+\newcommand{\whk}[1]{\widehat{\kappa_{#1}}} 
+\setcounter{MaxMatrixCols}{20}
+
+%--------------------------------------------------------------------------------------------------------------------------------------
+%	TITLE PAGE
+%--------------------------------------------------------------------------------------------------------------------------------------
+\title[Talk]{Basic Beamer Talk} 
+\author[Brooks Emerick et. al. ]{Brooks Emerick, Yun Lu, and Francis Vasko \\ Kutztown University }
+\institute[PIC 2022]{PIC Math Spring 2022 }
+%\medskip
+%\textit{bemerick@kutztown.edu}}
+\date{\today }
+
+
+%--------------------------------------------------------------------------------------------------------------------------------------
+%	DOCUMENT
+%--------------------------------------------------------------------------------------------------------------------------------------
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------------------------------------------
+%	Title Slide
+%--------------------------------------------------------------------------------------------------------------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage 
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------------------------------------------
+%	Introduction to the Problem
+%--------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+\section{Introduction} 
+\subsection{} 
+\begin{frame}
+\begin{center}
+\Huge{Introduction}
+\end{center}
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+% Motivation Breakdown :
+%---------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}
+
+\begin{itemize}
+	\item \textsc{Motivation}: Literature on determining the alternative optima for combinatorial optimization problems, especially NP-Hard problems, is minimal (e.g.~determining multiple solutions to TSP \cite{Huang_2018}).\vfill
+	\item The Minimum Cardinality Set Covering Problem (MCSCP) is a combinatorial integer programming problem with many applications (e.g.~ingot mold selection \cite{Vasko_1987}).  \vfill
+	\item \textsc{Goal:} Develop a methodology for predicting the qualitative number of alternative optima for MCSCP.\vfill 
+\end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+% Formulation of MCSCP:
+%---------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Formulation of MCSCP}
+\small
+
+Let $A = [a_{ij} ]$ be an $m\times n$ matrix, where $m < n$, and the entries of $A$ are zeros and ones.  Let $x = [x_j]$ be a bit string, then
+
+\begin{align*}
+	& \text{Minimize:}  \quad z = \displaystyle  \sum_{j = 1}^n x_j \tag{1} \\ 
+	& \text{Subject to: } \notag \\ 
+	& \qquad \qquad \sum_{j=1}^n a_{ij}x_j \geq 1 \quad \text{for} \, \, i = 1, 2, \ldots , m \tag{2.1} \\
+	& \qquad \qquad \sum_{j=1}^n a_{ij} \geq 1 \quad \text{for} \, \, i = 1, 2, \ldots , m \tag{2.2}\\
+	& \qquad \qquad \sum_{i=1}^m a_{ij} \geq 1 \quad \text{for} \, \, j = 1, 2, \ldots , n  \tag{2.3}\end{align*}
+
+\end{frame}
+
+\normalsize
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------------------------------------------------------------------------------
+%	Introduction to the Problem
+%--------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+\section{Figures} 
+\subsection{} 
+\begin{frame}
+\begin{center}
+\Huge{Figures}
+\end{center}
+\end{frame}
+%---------------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+% A Figure :
+%---------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{This is an example of multiple clicks on the same slide}
+\begin{overprint}
+
+\onslide<1>
+The figure hasn't appeared yet. 
+
+\onslide<2>
+Now the figure has appeared on the second click
+\begin{center}
+	\includegraphics[width = .75\textwidth]{Figures/Histogram.jpeg}
+\end{center}
+
+\end{overprint}
+\end{frame}
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------------------
+%	Reference Slide
+%---------------------------------------------------------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Selected References}
+\begin{thebibliography}{99}
+\tiny
+
+\bibitem{Huang_2018}
+T. Huang, Y. Gong, and J. Zhang.
+\newblock {\em Seeking multiple solutions of combinatorial optimization problems: a proof of principle study.}
+\newblock 2018 IEEE Symposium Series on Computational Intelligence (SSCI), Bangalore, India pp 1212-1218.
+\bibitem{Vasko_1987}
+F. J. Vasko, F. E. Wolf, and K. L. Stott.
+\newblock {\em Optimal selection of ingot sizes via set covering.}
+\newblock Opns Res, 38, pp 346-353, 1987.
+
+\bibitem{Matlab_2020}
+MATLAB.
+\newblock {\em Statistics and Machine Learning Toolbox User's Guide, R2020a. }
+\newblock 1 Apple Hill Dr, Natick, MA, 01760-2098, 2020.
+
+\bibitem{Taha_2017}
+H. Taha.
+\newblock {\em Operations Research: An Introduction, 10th edition. }
+\newblock Pearson, Boston, MA, 2017.
+
+\end{thebibliography}
+\end{frame}
+
+
+\end{document} 
