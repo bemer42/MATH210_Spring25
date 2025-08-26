@@ -1,0 +1,219 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgflibraryarrows}
+\usepackage{pgflibrarysnakes}
+\usepackage{upgreek}
+\usepackage{tipa}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{floatrow}
+\usepackage{gensymb}
+\usepackage{caption}
+
+\usepackage{versions}
+\excludeversion{sol}
+\includeversion{sol}
+\newenvironment{solution}{
+\sol\\{\sc{Solution:}}}{
+$\hfill\blacksquare$\endsol}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+
+
+
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\setlength\headsep{30pt}
+\lhead{Homework 2}
+%\chead{\today}
+\rhead{MATH 210}
+
+\title{\textbf{\textsc{Homework 2}}\\
+Matrices, Interpolation, and Curve Fitting }
+\author{\textbf{\textsc{MATH 210-010 $\diamond$ Fall 2024}}}
+%\date{\today}
+
+
+
+\begin{document}
+\maketitle
+\author
+
+\vspace{3cm}
+\begin{center}
+\textsc{Due: Sunday, September 29, 2024 }\\
+%\textsc{Read: Matlab Week 1 Handout}
+\end{center}
+
+
+\normalsize
+% \fbox{\fbox{\parbox{5.5in}{
+ 
+        {\bf Instructions:}   To complete a problem set, you must submit a zip file labeled \verb|Yourlastname_HW#| to Dropbox no later than 11:59 PM on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_HW2!.  In this folder, a \texttt{py} file is to be submitted for each problem such that when the \texttt{py} file is executed, the output (as presented in Python) is the solution to the problem.  Each \texttt{py} file must be saved as \verb!Yourlastname_HW#_No#.py!.  For example, if I were submitting the answer to Question Number 1 on Homework 1, the \texttt{py} file for that problem would be saved as \verb!Emerick_HW2_No1.py!.  Each \texttt{py} file should be well commented and be free of extraneous lines and commands.  Also, each \texttt{py} file must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.
+
+
+
+
+
+%\vspace{4cm}
+%\noindent \textsc{Instructions:}  To complete a problem set, you must submit a folder labeled \verb!Yourlastname_PS#! to Dropbox no later than midnight on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_PS1!.  In this folder, an \texttt{m-file} is to be submitted for each problem such that when the \texttt{m-file} is executed, the output (as presented in \textsc{Matlab}) is the solution to the problem.  Each \texttt{m-file} must be saved as \verb!Yourlastname_PS#_No#.m!.  For example, if I were submitting the answer to Question Number 1 on Problem Set 1, the \texttt{m-file} for that problem would be saved as \verb!Emerick_PS1_No1.m!.  Each \texttt{m-file} should be well commented and be free of extraneous lines and commands.  Also, each \texttt{m-file} must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.  Remember:  if you don't know what a command does, you can always use \textsc{Matlab}'s \texttt{help} command or the internet...   \\
+
+\vspace{2cm}
+\flushright Name: $\qquad \qquad \qquad \qquad $
+\flushright Score: $\qquad \qquad \qquad \qquad $
+
+\pagebreak
+
+
+
+
+
+
+
+\flushleft
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For each problem below submit a separate \texttt{py} file with an initial comment that describes the objective of the \texttt{py} file.  Always remember to begin your \texttt{py} file with \texttt{import numpy as np} and \verb|import matplotlib.pyplot as plt|.  For some of the problems below, use \texttt{import scipy.linalg as LA}.   Also, for any problems that require a plot, the title size, label size, etc should follow the default figure settings discussed in class and on the handout.  
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+\begin{enumerate}[{$\qquad 1.]$}]
+\item Solve the following system of equations by setting up the proper matrix equation and solving it in two ways: using $\texttt{LA.inv}$ and $\texttt{LA.solve}$: 
+\begin{align*}
+-3x_1 + x_2 + x_3 & = 5 \\
+2x_1 - x_2 + 4x_3 & = 1\\
+x_1 + 3x_2 - 11x_3 & = -2 \end{align*}
+Your final output should print the solution vector $\boldsymbol{x}$.  
+
+
+\item Create an \texttt{py} file that defines the following matrices.  I want you to explore the built-in functions that are used to create matrices such as these in one or two lines. 
+\begin{enumerate}
+\item[$a.)$] Define $A$ as a $30\times 20$ matrix of threes using \texttt{np.ones}.
+\item[$b.)$] Using \texttt{np.reshape} and \texttt{np.arange}, define $B$ as the $10 \times 10$ matrix:
+\[\displaystyle \begin{bmatrix} 1 & 11 & \cdots & 91 \\ 2 & 12 & \cdots & 92 \\ 
+\vdots & \vdots & \ddots & \vdots \\
+10 & 20 & \cdots & 100\end{bmatrix}.\]
+\item[$c.)$] Using \texttt{np.diag} and \texttt{np.ones} more than once, define $C$ as the $16\times 16$ matrix: 
+\[\displaystyle \begin{bmatrix} -2 & 1 & 0 & 0 &  \cdots & 0 & 1 \\ 
+1 & -2 & 1 & 0 & \cdots & 0 & 0 \\ 
+0 & 1 & -2 & 1  & \cdots & 0 & 0 \\ 
+\vdots & \ddots &  \ddots & \ddots &  \ddots & \ddots & \vdots \\
+0 & 0  & \cdots & 1& -2 & 1 & 0\\
+0 & 0  & \cdots & 0&  1& -2 & 1\\
+1 & 0  & \cdots & 0 & 0  &1& -2 \end{bmatrix}.\]
+(This is a \textit{differentiation matrix}.) Use the command \texttt{plt.spy(C)} to plot the sparsity of this matrix in Figure 1. 
+
+\item[$d.)$] Read about \texttt{LA.toeplitz} and use it to make the matrix from part $c.)$.  Call this matrix $D$.
+
+\item[$e.)$] Use \texttt{LA.toeplitz}, \texttt{np.triu}, and whatever else to make the following $8\times 8$ matrix:
+\[\displaystyle E = \begin{bmatrix} 1 & 2 & 3 & \cdots & 8  \\ 
+0  & 1 & 2 & \cdots & 7 \\ 
+\vdots & \ddots & \ddots & \ddots & \vdots \\
+0 &  \cdots & 0 & 1 & 2 \\
+0 &  \cdots & 0 & 0 & 1\end{bmatrix}.\]
+Use the command \texttt{plt.spy(E)} to plot the sparsity of this matrix in Figure 2.
+ 
+\item[$f.)$] Use \texttt{LA.toeplitz} and whatever else to create the following $8\times 8$ matrix:
+\[\displaystyle F = \begin{bmatrix} 1 & \frac{1}{2} & \frac{1}{3} & \cdots & \frac{1}{8}  \\ 
+\frac{1}{2}  & 1 & \frac{1}{2} & \cdots & \frac{1}{7} \\ 
+\vdots & \ddots & \ddots & \ddots & \vdots \\
+\frac{1}{7} &  \cdots & \frac{1}{2} & 1 & \frac{1}{2} \\
+\frac{1}{8} &  \cdots & \frac{1}{3} & \frac{1}{2} & 1\end{bmatrix}.\]
+
+\end{enumerate}
+
+
+\item In this problem you are trying to find an approximation to the periodic function $f(x) = e^{\sin(x-1)}$ over one period, $0\leq x \leq 2\pi$.  In Python, let \verb|x = np.linspace(0, 2*np.pi, int(200))| and \texttt{y} be the evaluation of $f$ at those points.
+\begin{enumerate}
+	\item[$a.)$] Fit a degree 7 polynomial to these data by using the normal equations and the appropriate truncated Vandermonde matrix $A$. 
+	\item[$b.)$] Fit the following sinusoidal function 
+		\[ f(x) = c_0 + c_1 \cos(x) + c_2 \sin(x) + c_3\cos(2x) + c_4\sin(2x) \]
+		using \verb|scipy.optimize.curve_fit|.  
+	\item[$c.)$] Plot the original function, and the two approximations together on a well-labeled graph. 
+	\item[$d.)$] Compute the $R^2$ value for each function and print the value for each model.
+	
+\end{enumerate}
+
+\item Suppose we want to fit the function $f(x) = x/(ax + b)$ to a set of data by optimizing the two parameters $a$ and $b$.  Show that for any set of data, fitting the parameters $a$ and $b$ can be transformed into a (non-square) system like $A\boldsymbol{x} = \boldsymbol{b}$, for some matrix $A$ and vector $\boldsymbol{b}$.  Given the ``toy" data:
+\begin{verbatim}
+x_data = np.linspace(1, 10, 50)
+y_data = x_data/(2.5*x_data + 1.3) + .01*np.random.normal(0,1,size=len(x_data)),\end{verbatim} 
+solve the least squares fitting problem in two ways: solving the appropriate normal equations using \texttt{LA.solve} and using the built-in function \verb|scipy.optimize.curve_fit|.  After getting each solution, compare them by computing the $R^2$ value for each model.  
+
+%\item Create an \texttt{m-file} that answers the following questions using the functions and commands from linear algebra:
+%\begin{enumerate}[{$\qquad a.)$}]
+%\item Assume $A$ is a generic $n\times n$ matrix.  Determine, in your \texttt{m-file}, which statement is true:
+%$a.)$  \verb+A^(-1) = 1/A+$\,\,$  $b.)$  \verb+A.^(-1) = 1./A+.
+%\item Find a matrix $A$ such that $A^TA$ is invertible, but $AA^T$ is not.  Define $A$ in the \texttt{m-file} and use \texttt{inv} or \texttt{det} to determine if either one is invertible.  
+%\item Solve the following system of equations by setting up the proper matrix equation and solving with the backslash command:
+%\begin{align*}
+%-3x_1 + x_2 + x_3 & = 5 \\
+%2x_1 - x_2 + 4x_3 & = 1\\
+%x_1 + 3x_2 - 11x_3 & = -2 \end{align*}
+%Once you solve for the vector $\boldsymbol{x}$, check the error by computing the difference $A\boldsymbol{x} - \boldsymbol{b}$. 
+%\end{enumerate}
+%
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

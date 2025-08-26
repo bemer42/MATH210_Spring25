@@ -1,0 +1,168 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgflibraryarrows}
+\usepackage{pgflibrarysnakes}
+\usepackage{upgreek}
+\usepackage{tipa}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{floatrow}
+\usepackage{gensymb}
+\usepackage{caption}
+
+\usepackage{versions}
+\excludeversion{sol}
+\includeversion{sol}
+\newenvironment{solution}{
+\sol\\{\sc{Solution:}}}{
+$\hfill\blacksquare$\endsol}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+
+
+
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\setlength\headsep{30pt}
+\lhead{Homework 1}
+%\chead{\today}
+\rhead{MATH 210}
+
+\title{\textbf{\textsc{Homework 1}}\\
+Basic Numpy Commands and Plotting Functions }
+\author{\textbf{\textsc{MATH 210-010 $\diamond$ Fall 2024}}}
+%\date{\today}
+
+
+
+\begin{document}
+\maketitle
+\author
+
+\vspace{3cm}
+\begin{center}
+\textsc{Due: Friday, September 6, 2024 }\\
+%\textsc{Read: Matlab Week 1 Handout}
+\end{center}
+
+
+\normalsize
+% \fbox{\fbox{\parbox{5.5in}{
+ 
+        {\bf Instructions:}   To complete a problem set, you must submit a zip file labeled \verb|Yourlastname_HW#| to Dropbox no later than 11:59 PM on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_HW1!.  In this folder, a \texttt{py} file is to be submitted for each problem such that when the \texttt{py} file is executed, the output (as presented in Python) is the solution to the problem.  Each \texttt{py} file must be saved as \verb!Yourlastname_HW#_No#.py!.  For example, if I were submitting the answer to Question Number 1 on Homework 1, the \texttt{py} file for that problem would be saved as \verb!Emerick_HW1_No1.py!.  Each \texttt{py} file should be well commented and be free of extraneous lines and commands.  Also, each \texttt{py} file must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.
+
+
+
+
+
+%\vspace{4cm}
+%\noindent \textsc{Instructions:}  To complete a problem set, you must submit a folder labeled \verb!Yourlastname_PS#! to Dropbox no later than midnight on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_PS1!.  In this folder, an \texttt{m-file} is to be submitted for each problem such that when the \texttt{m-file} is executed, the output (as presented in \textsc{Matlab}) is the solution to the problem.  Each \texttt{m-file} must be saved as \verb!Yourlastname_PS#_No#.m!.  For example, if I were submitting the answer to Question Number 1 on Problem Set 1, the \texttt{m-file} for that problem would be saved as \verb!Emerick_PS1_No1.m!.  Each \texttt{m-file} should be well commented and be free of extraneous lines and commands.  Also, each \texttt{m-file} must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.  Remember:  if you don't know what a command does, you can always use \textsc{Matlab}'s \texttt{help} command or the internet...   \\
+
+\vspace{2cm}
+\flushright Name: $\qquad \qquad \qquad \qquad $
+\flushright Score: $\qquad \qquad \qquad \qquad $
+
+\pagebreak
+
+
+
+
+
+
+
+\flushleft
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For each problem below submit a separate \texttt{py} file with an initial comment that describes the objective of the \texttt{py} file.  Always remember to begin your \texttt{py} file with \texttt{import numpy as np} and \verb|import matplotlib.pyplot as plt|.  Also, for any problems that require a plot, the title size, label size, etc should follow the default figure settings discussed in class and on the handout.  
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+\begin{enumerate}[{$\qquad 1.]$}]
+
+\item Create an \texttt{py} file that defines the following variables:
+\begin{multicols}{2}
+\begin{enumerate}
+\item[$a.)$] $a = 10$
+\item[$b.)$] $b = 2.5\times 10^{23}$
+\item[$c.)$] $c = \log_{10}(2)$
+\item[$d.)$] $d = \log_{2}(10)$
+\item[$e.)$] $e = |\sin^{-1}(-1/2)|$
+\item[$f.)$] $f = \text{the largest prime factor of 208301123}$ (Hint: import the \texttt{sympy} package and find a known function.)
+Your code should print the values of each variable in the command window. 
+
+\end{enumerate}  
+\end{multicols}
+
+\item Create an \texttt{py} file that outputs the graph of 
+\[ y = \frac{x}{30} - e^{-\frac{x}{6}}\cos(x)\] 
+over the interval $x\in[-5,20]$.  The graph should be black, solid, and have line width 3.  The title should be \texttt{Homework 1, Plot 1}.  Use \texttt{plt.xlim} and \texttt{plt.ylim} to create a ``tight'' window, i.e., the $x$-axis should span from $-5$ to $20$ and the $y$-axis should span from the minimum value of $y$ to the maximum value of $y$.  Your code should save this plot as a high resolution \texttt{eps} file.  (Hint: consider the commands \texttt{np.min()} and \texttt{np.max()}.)
+
+
+\item Create an \texttt{py} file that outputs the plot of $y = x^3-7x^2+10x$ over the interval $x\in [-1,6]$ in solid black with line width 3 with title \texttt{Homework 1, Plot 2}.  Plot on this same graph the tangent lines to the curve at $x = 1$, $x = 3$, and $x = 5$ in red, green, and blue lines, respectively.  Your code should save this plot as a high resolution \texttt{eps} file. (Hint: find the equation for these lines using pencil and paper, and define three new arrays for these lines to be plotted.)
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

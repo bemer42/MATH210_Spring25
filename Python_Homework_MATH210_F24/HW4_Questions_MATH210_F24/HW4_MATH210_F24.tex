@@ -1,0 +1,167 @@
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{empheq}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgflibraryarrows}
+\usepackage{pgflibrarysnakes}
+\usepackage{upgreek}
+\usepackage{tipa}
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{floatrow}
+\usepackage{gensymb}
+\usepackage{caption}
+
+\usepackage{versions}
+\excludeversion{sol}
+\includeversion{sol}
+\newenvironment{solution}{
+\sol\\{\sc{Solution:}}}{
+$\hfill\blacksquare$\endsol}
+
+\newcommand{\de}[2]{\frac{d #1}{d #2}}
+
+\usepackage[T1]{fontenc}
+\usepackage[font=small,labelfont=bf,tableposition=top]{caption}
+
+\DeclareCaptionLabelFormat{andtable}{#1~#2  \&  \tablename~\thetable}
+
+
+
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\setlength\headsep{30pt}
+\lhead{Homework 4}
+%\chead{\today}
+\rhead{MATH 210}
+
+\title{\textbf{\textsc{Homework 4}}\\
+Data Cleaning}
+\author{\textbf{\textsc{MATH 210-010 $\diamond$ Fall 2024}}}
+%\date{\today}
+
+
+
+\begin{document}
+\maketitle
+\author
+
+\vspace{3cm}
+\begin{center}
+\textsc{Due: Thursday, November 21, 2024 }\\
+%\textsc{Read: Matlab Week 1 Handout}
+\end{center}
+
+
+\normalsize
+% \fbox{\fbox{\parbox{5.5in}{
+ 
+        {\bf Instructions:}   To complete a problem set, you must submit a zip file labeled \verb|Yourlastname_HW#| to Dropbox no later than 11:59 PM on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_HW4!.  In this folder, a \texttt{py} file is to be submitted for each problem such that when the \texttt{py} file is executed, the output (as presented in Python) is the solution to the problem.  Each \texttt{py} file must be saved as \verb!Yourlastname_HW#_No#.py!.  For example, if I were submitting the answer to Question Number 1 on Homework 4, the \texttt{py} file for that problem would be saved as \verb!Emerick_HW4_No1.py!.  Each \texttt{py} file should be well commented and be free of extraneous lines and commands.  Also, each \texttt{py} file must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.
+
+
+
+
+
+%\vspace{4cm}
+%\noindent \textsc{Instructions:}  To complete a problem set, you must submit a folder labeled \verb!Yourlastname_PS#! to Dropbox no later than midnight on the due date above.  For example, if I were to complete this assignment, my folder would be named \verb!Emerick_PS1!.  In this folder, an \texttt{m-file} is to be submitted for each problem such that when the \texttt{m-file} is executed, the output (as presented in \textsc{Matlab}) is the solution to the problem.  Each \texttt{m-file} must be saved as \verb!Yourlastname_PS#_No#.m!.  For example, if I were submitting the answer to Question Number 1 on Problem Set 1, the \texttt{m-file} for that problem would be saved as \verb!Emerick_PS1_No1.m!.  Each \texttt{m-file} should be well commented and be free of extraneous lines and commands.  Also, each \texttt{m-file} must output only what the problem asked to be outputted.  Failure to abide by these simple homework submission guidelines may result in a deduction of points at my discretion.  Remember:  if you don't know what a command does, you can always use \textsc{Matlab}'s \texttt{help} command or the internet...   \\
+
+\vspace{2cm}
+\flushright Name: $\qquad \qquad \qquad \qquad $
+\flushright Score: $\qquad \qquad \qquad \qquad $
+
+\pagebreak
+
+
+
+
+
+
+
+\flushleft
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For each problem below submit a separate \texttt{py} file with an initial comment that describes the objective of the \texttt{py} file.  Always remember to begin your \texttt{py} file by importing appropriate libraries.  
+
+\begin{enumerate}[{$\qquad 1.]$}]
+
+\item Create a file that uploads the \texttt{RottenTomatoes.csv} data set.  Perform the following changes in Python and then save a cleaned \texttt{csv} file.  
+
+\begin{enumerate}[{$\quad a.)$}]
+	\item In the column labeled Certificate, there is a rating for each movie (e.g. PG-13, R, NR, etc).  For some of the entries, there is a justification for this rating in parentheses.  For any entries with a justification, remove the justification but keep the rating.  
+	
+	\item In the column labeled Runtime, every entry has ``minutes.'' Delete the string ``minutes'' and preserve the numerical value for the runtime.  Then, convert all entries in this column to type \texttt{float}.  
+	
+	\item In the column labeled Director, there is a list of directors.  Most movies only have one director.  Preserve only the first director before the first comma.  Delete any entry after the first comma.  
+	
+	\item In the Studio column, convert all entries to \texttt{string} type. 
+	
+	\item In the last four columns (RT Critics Score, RT Critic Reviews, RT Audience Score, and RT Audience Reviews), make sure all entries are numerical and converted to \texttt{float} type. 
+	
+\end{enumerate}
+
+
+\item Create file that uploads the \texttt{iMDb.csv} data set.  Perform the following changes in Python and then save a cleaned \texttt{csv} file. 
+
+\begin{enumerate}[{$\quad a.)$}]
+	\item Write code that deletes the columns labeled Poster, Cast, Description, Review Title, and Review.
+	\item In the Genre column, only keep the first classification before the first comma.  That is, any entries that have more than one genre listed, only keep the first genre in the list. 
+	
+	\item The rating system in this file is based on India's movie rating system.  Some entries such as UA, A, or UA 16+ are not rated in the United States.  Search for an equivalent rating for the unknown India ratings and convert any unknown strings to known U.S. ratings.  If there is no equivalent, reduce the entry to a blank entry.
+	
+	\item In the columns for iMDb Critics Score, iMDb Metascore, iMDb Audience Reviews, and iMDb Critic Reviews, be sure to convert them all to the same \texttt{float} type. 
+\end{enumerate}
+
+
+\item Create a new dataset with the common movies of both cleaned data frames.  In this merged data frame, the columns should include Title, Year, Runtime, Genre, Director, Studio, Certificate, and the eight numerical columns pertaining to the two websites critics scores, audience scores, number of critic reviews, and number of audience reviews.  
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
